@@ -1,0 +1,34 @@
+class Solution:
+    def combinationSum(self, nums: List[int], target: int) -> List[List[int]]:
+   
+        res=[]
+        if not nums:
+            return res
+        new_res=[]
+        def dfs(i,nums,cur_target,new_res):
+         
+            
+
+            if cur_target<0 or i>=len(nums):
+                return
+            if cur_target==0:
+                res.append(new_res.copy())
+                return
+
+            new_res.append(nums[i])
+            dfs(i,nums,cur_target-nums[i],new_res)
+            new_res.pop()
+            dfs(i+1,nums,cur_target,new_res)
+
+
+
+
+
+        
+        
+        dfs(0,nums,target,[])
+        return res
+
+
+        
+        
